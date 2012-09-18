@@ -89,7 +89,7 @@ class LLDP
         input_hash.each do |key, value|
             Facter.add(key) do
                 setcode do
-                    value
+                    value.join(',')
                 end
             end
         end
@@ -98,8 +98,5 @@ class LLDP
     end
 end
 
-if __FILE__ == $0
-    require 'lldp'
-    _lldp = LLDP.new(test=false)
-end
+LLDP.new(test=false)
 
